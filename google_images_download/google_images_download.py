@@ -748,7 +748,7 @@ class googleimagesdownload:
         start_line = s.find("AF_initDataCallback({key: \\'ds:1\\'") - 10
         start_object = s.find('[', start_line + 1)
         end_object = s.find('</script>', start_object + 1) - 4
-        object_raw = str(s[start_object:end_object])
+        object_raw = str(s[start_object:end_object+1])
         object_decode = bytes(object_raw, "utf-8").decode("unicode_escape")
         image_objects = json.loads(object_decode)[31][0][12][2]
         image_objects = [x for x in image_objects if x[0]==1]
